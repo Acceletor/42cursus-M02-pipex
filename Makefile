@@ -10,28 +10,36 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRCS = src/pipex.c src/pipex_utils.c
+SRCS = pipex.c pipex_utils.c
 
+# Prepares a list of expected .o files
 OBJ = $(SRCS:%.c=$(OBJ_DIR)%.o)
+
+start: 
+	@make all
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
+# Tells Make how to build those .o files
+$(OBJ_DIR)%.o: src/%.c
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
 $(NAME): $(OBJ_DIR) $(OBJ)
 	@make -C ./libft
-	$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
 
 all: $(NAME)
 	@echo "\033[32m[Program is ready for use]\033[0m"
 
 clean:
-	$(RM) -r $(OBJ_DIR)
+	@$(RM) -r $(OBJ_DIR)
 	@make clean -C ./libft
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 	@make fclean -C ./libft
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: start all clean fclean re
