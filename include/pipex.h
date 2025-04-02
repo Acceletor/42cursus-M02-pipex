@@ -11,7 +11,17 @@
 # include <sys/stat.h> // File status and permission-related stuff 0644, permission: rw-r--r--
 
 
+//pipex
+void exec(char *cmd, char **env);
+void child(char **argv, int end[2], char **env);
+void parent(char **argv, int end[2], char **env);
 
+// utils
+int open_file(char *file, int in_or_out);
+char *get_env_path(char *name, char**env);
+void free_sprited(char **sprited);
+char *getpath(char *cmd, char **env);
+void exit_handler(int status);
 
 
 
