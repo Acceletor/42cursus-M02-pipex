@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/07 17:18:38 by ksuebtha          #+#    #+#             */
+/*   Updated: 2025/04/07 17:31:33 by ksuebtha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
@@ -8,21 +20,18 @@
 # include <stdio.h> //perror()
 # include <sys/types.h> //pid_t - return by fork() id
 # include <sys/wait.h> //wait() waitpid()
-# include <sys/stat.h> // File status and permission-related stuff 0644, permission: rw-r--r--
-
+# include <sys/stat.h> // File status and permission-related stuff
 
 //pipex
-void exec(char *cmd, char **env);
-void child(char **argv, int end[2], char **env);
-void parent(char **argv, int end[2], char **env);
+void	exec(char *cmd, char **env);
+void	child(char **argv, int end[2], char **env);
+void	parent(char **argv, int end[2], char **env);
 
 // utils
-int open_file(char *file, int in_or_out);
-char *get_env_path(char *name, char**env);
-void free_sprited(char **sprited);
-char *getpath(char *cmd, char **env);
-void exit_handler(int status);
-
-
+int		open_file(char *file, int in_or_out);
+char	*get_env_path(char *name, char**env);
+void	free_sprited(char **sprited);
+char	*getpath(char *cmd, char **env);
+void	exit_handler(int status);
 
 #endif
