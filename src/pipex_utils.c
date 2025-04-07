@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:18:31 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/04/07 17:31:13 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:06:55 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ char	*get_env_path(char *name, char**env)
 	return (NULL);
 }
 
-void	free_sprited(char **sprited)
+void	free_splited(char **splited)
 {
 	int	i;
 
 	i = 0;
-	while (sprited[i])
+	while (splited[i])
 	{
-		free(sprited[i]);
+		free(splited[i]);
 		i++;
 	}
-	free(sprited);
+	free(splited);
 }
 
 char	*getpath(char *cmd, char **env)
@@ -83,14 +83,14 @@ char	*getpath(char *cmd, char **env)
 		free(path_part);
 		if (access(exec, F_OK | X_OK) == 0)
 		{
-			free_sprited(s_cmd);
+			free_splited(s_cmd);
 			return (exec);
 		}
 		free(exec);
 		i++;
 	}
-	free_sprited(allpath);
-	free_sprited(s_cmd);
+	free_splited(allpath);
+	free_splited(s_cmd);
 	return (NULL);
 }
 

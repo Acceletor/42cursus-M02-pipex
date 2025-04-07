@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:18:38 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/04/07 17:31:33 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:01:59 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	parent(char **argv, int end[2], char **env);
 // utils
 int		open_file(char *file, int in_or_out);
 char	*get_env_path(char *name, char**env);
-void	free_sprited(char **sprited);
+void	free_splited(char **splited);
 char	*getpath(char *cmd, char **env);
 void	exit_handler(int status);
 
