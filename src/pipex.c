@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:18:28 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/04/07 18:07:49 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:27:50 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	exec(char *cmd, char **env)
 
 	if (!cmd || cmd[0] == 0)
 	{
-		ft_putstr_fd("Command not found: \n", 1);
-		exit (1);
+		ft_putstr_fd("Command not found: \n", 2);
+		exit (127);
 	}
 	s_cmd = ft_split(cmd, ' ');
 	path = getpath(cmd, env);
 	if (!path || execve(path, s_cmd, env) == -1)
 	{
-		ft_putstr_fd("Command not found: ", 1);
-		ft_putendl_fd(s_cmd[0], 1);
+		ft_putstr_fd("Command not found: ", 2);
+		ft_putendl_fd(s_cmd[0], 2);
 		free_splited(s_cmd);
-		exit (1);
+		exit (127);
 	}
 }
 
